@@ -1,0 +1,39 @@
+[project]
+name = "geff-tfe"
+dynamic = ["version"]
+description = "Draft repo for GEFF import functionally in TFE. To be merged into https://github.com/allen-cell-animated/colorizer-data eventually."
+readme = "README.md"
+authors = [
+    { name = "Max Hess", email = "hess.max.timo@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "colorizer-data",
+    "geff[rx]",
+    "ngio",
+    "polars",
+]
+
+[project.scripts]
+geff-tfe = "geff_tfe:main"
+
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/geff_tfe/_version.py"
+
+[tool.uv.sources]
+colorizer-data = { git = "https://github.com/allen-cell-animated/colorizer-data.git" }
+lightsheet-data = { git = "https://github.com/LiberaliLab/lightsheet-data" }
+geff = { git = "https://github.com/MaksHess/geff", subdirectory = "packages/geff", branch = "fix/node-props-order" }
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.3.0",
+    "lightsheet-data",
+]

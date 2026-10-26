@@ -1,0 +1,16 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# local data files
+data/
+
+# hatch-vcs generated version file
+src/geff_tfe/_version.py
